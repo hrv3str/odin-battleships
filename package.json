@@ -1,0 +1,44 @@
+{
+  "name": "odin-battleships",
+  "version": "1.0.0",
+  "description": "JS implementation of the \"battleships\" game",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "serve": "npx webpack serve",
+    "deploy-demo": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
+    "build": "webpack --config webpack.config.js",
+    "config": "code webpack.config.js",
+    "watch": "webpack --watch",
+    "was": "concurrently \"npm run watch\" \"npm run serve\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hrv3str/odin-battleships.git"
+  },
+  "author": "hrv3str",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hrv3str/odin-battleships/issues"
+  },
+  "homepage": "https://github.com/hrv3str/odin-battleships#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "babel-loader": "^8.3.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^8.2.1",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.48.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "html-webpack-plugin": "^5.5.3",
+    "normalize.css": "^8.0.1",
+    "prettier": "^3.0.3",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
