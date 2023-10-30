@@ -2,6 +2,7 @@ class Ship {
     constructor (length) {
         this.length = length;
         this.hitPoints = length;
+        this.coordinates = undefined;
     }
 
     hit() {
