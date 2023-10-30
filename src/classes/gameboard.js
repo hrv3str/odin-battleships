@@ -54,4 +54,8 @@ export default class Gameboard {
         this.misses.push(string);
         return null
     };
+
+    isFleetSunk () {
+        return this.docks.every((ship) => ship.isSunk());
+    }
 }
