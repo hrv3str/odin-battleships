@@ -39,5 +39,10 @@ describe('Gameboard', () => {
             expect(deepSea.receiveAttack('c4')).toBeFalsy;
             expect(deepSea.receiveAttack('a2')).toBeFalsy;
         });
+
+        it('Check if all the ships are sunk', () => {
+            deepSea.receiveAttack('a1');
+            expect(deepSea.isFleetSunk()).toBeTruthy;
+        });
     })
 });
