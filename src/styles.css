@@ -1,0 +1,86 @@
+:root {
+    --f-display: 'Black Ops One', serif;
+    --f-monospace: 'Josefin Sans', monospace;
+    --c-black: #191919;
+    --c-white: #e5e5e5;
+    --c-glassy-one: #e5e5e510;
+    --c-glassy-two: #e5e5e52a;
+    --s-side: 3rem;
+}
+
+body {
+    background: url(./assets/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 98vh;
+    width: 98vw;
+    color: var(--c-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: var(--f-display);
+    font-size: 5rem;
+    text-align: center;
+    text-shadow: var(--c-black) 0 0 5px;
+    font-weight: 600;
+    letter-spacing: 0.25rem;
+    margin: 1.5rem 0;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+li > button{
+    font-family: var(--f-monospace);
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--c-white);
+    text-shadow: var(--c-black) 0 0 3px;
+    margin: 0.5rem;
+}
+
+li > button:hover::before {
+    content: '[';
+    position: absolute;
+    left: 40%;
+}
+
+li > button:hover::after {
+    content: ']';
+    position: absolute;
+    right: 36%;
+}
+
+li > button:hover {
+    cursor: pointer;
+}
+
+.plate {
+    background: linear-gradient(
+        135deg,
+        var(--c-glassy-one),
+        var(--c-glassy-two)
+    );
+    border-radius: 1rem;
+    border: 1px solid var(--c-glassy-two);
+    box-shadow: 0 0 5px var(--c-black);
+    backdrop-filter: blur(7px);
+    padding: 0.5rem;
+}
+
+.start {
+    width: calc(var(--s-side) * 20);
+    height: calc(var(--s-side) * 8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
