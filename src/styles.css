@@ -31,6 +31,13 @@ h1 {
     margin: 1.5rem 0;
 }
 
+h2 {
+    font-family: var(--f-display);
+    font-weight: 300;
+    text-shadow: var(--c-black) 0 0 5px;
+    text-align: center;
+}
+
 ul {
     list-style: none;
     text-align: center;
@@ -73,7 +80,7 @@ li > button:hover {
     border-radius: 1rem;
     border: 1px solid var(--c-glassy-two);
     box-shadow: 0 0 5px var(--c-black);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(30px);
     padding: 0.5rem;
 }
 
@@ -83,4 +90,36 @@ li > button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.game {
+    width: calc(var(--s-side) * 25);
+    height: calc(var(--s-side) * 15);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gameboard {
+    --param: calc(var(--s-side) * 10);
+    width: var(--param);
+    height: var(--param);
+    border: 1px solid var(--c-glassy-two);
+    margin: 2rem auto;
+    box-shadow: var(--c-glassy-one) 0 0 3px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.cell {
+    border: 1px solid var(--c-glassy-two);
+    height: 100%;
+    width: 100%;
+    background-color: var(--c-glassy-one);
+}
+
+.cell:hover {
+    cursor: pointer;
+    border: 1px solid var(--c-black);
+    box-shadow: var(--c-black) 0 0 3px;
 }
