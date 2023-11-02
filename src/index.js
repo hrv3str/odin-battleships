@@ -5,3 +5,4 @@ import UI from './classes/UI';
 const ui = new UI;
 
 ui.game();
+ui.placeBattleship(3);
