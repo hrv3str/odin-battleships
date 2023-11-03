@@ -107,13 +107,14 @@ class UI {
             } else return
         }
 
-        const shadowShip = (e) => {
+        const shipFrame = (e) => {
             const target = e.target;
 
             const template = []
 
             switch (rotation) {
                 case 'horizontal':
+                    if (target.dataset.x < length) return;
                     for (let i = 0; i < length; i++) {
                         const x = (parseInt(target.dataset.x) - length + 1 + i).toString();
                         const cell = this.searchCell(x, target.dataset.y);
@@ -148,7 +149,7 @@ class UI {
             target.addEventListener('mouseleave', unHover);
         }
 
-        this.gameboardLeft.addEventListener('mouseover', shadowShip);
+        this.gameboardLeft.addEventListener('mouseover', shipFrame);
         document.addEventListener('keydown', rotate)
     }
 }
