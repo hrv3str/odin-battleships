@@ -5,9 +5,16 @@ class UI {
         this.gameboardRight = undefined;
         this.cellsLeft = undefined;
         this.cellsRight = undefined;
+        this.sourceRight = undefined;
+        this.sourceLeft = undefined;
     }
 
-    start () {
+    linkSources (left, right) {
+        this.sourceLeft = left;
+        this.sourceRight = right;
+    }
+
+    startScreen () {
         this.body.innerHTML = ''
         const plate = document.createElement('div');
         plate.classList.add('plate');
@@ -30,7 +37,7 @@ class UI {
         this.body.appendChild(plate);
     }
 
-    game () {
+    gameScreen () {
         this.body.innerHTML = ''
         const plate = document.createElement('div');
         plate.classList.add('plate');
@@ -89,11 +96,59 @@ class UI {
         this.cellsRight = this.gameboardRight.querySelectorAll('.cell');
     }
 
+    
+
     searchCell (x, y) {
         for (let i = 0; i < this.cellsLeft.length; i++) {
             const cell = this.cellsLeft[i];
             if (cell.dataset.x === x && cell.dataset.y === y) return cell;
         }
+    }
+
+    refreshBoard () {
+        const source = this.sourceLeft;
+        const shipQ = [];
+        const docks = source.docks;
+        const misses = source.misses;
+        const hits = source.hits;
+
+        const translate = (item) => {
+            const translatedCoordinates = [...item];
+            const [x, y] = translatedCoordinates;
+            return [y, x];
+        }
+
+        docks.forEach(ship => {
+            ship.coordinates.forEach(item => {
+                shipQ.push(item);
+            })
+        });
+
+        shipQ.forEach(item => {
+            const translation = translate(item);
+            console.log(...translation);
+            const cell = this.searchCell(...translation);
+            console.log(cell);
+            cell.classList.add('ship-body');
+        });
+
+        misses.forEach(item => {
+            const translation = translate(item);
+            const cell = this.searchCell(...translation);
+            const prop = document.createElement('span');
+            prop.classList.add('miss');
+            cell.appendChild(prop);
+        });
+
+        hits.forEach(item => {
+            const translation = translate(item);
+            const cell = this.searchCell(...translation);
+            const prop = document.createElement('span');
+            prop.classList.add('hit');
+            cell.appendChild(prop);
+        })
+
+        
     }
 
     placeBattleship (shipLength) {
