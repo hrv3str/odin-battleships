@@ -116,11 +116,10 @@ li > button:hover {
     height: 100%;
     width: 100%;
     background-color: var(--c-glassy-one);
-    cursor: pointer;
 }
 
 .hovered {
-    cursor: pointer;
+    cursor: move;
     border: 1px solid var(--c-black);
     box-shadow: var(--c-black) 0 0 3px;
 }
