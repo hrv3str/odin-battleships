@@ -137,7 +137,7 @@ export default class Gameboard {
                 if (item === string) {
                     ship.hit();
                     this.hits.push(string);
-                    if (ship.isSunk()) surroundWithMisses(ship);
+                    if (ship.isSunk()) this.surroundWithMisses(ship);
                     return true;
                 };
             };
