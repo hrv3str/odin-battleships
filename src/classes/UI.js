@@ -1,4 +1,4 @@
-class UI {
+ class UI {
     constructor() {
         this.body = document.body;
         this.gameboardLeft = undefined;
@@ -43,16 +43,74 @@ class UI {
         plate.classList.add('plate');
         plate.classList.add('game');
         plate.innerHTML = `
-            <div>
+            <div class="panel">
                 <h2>player 1</h2>
+                <div class="numbers">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <div class="letters">
+                    <span>a</span>
+                    <span>b</span>
+                    <span>c</span>
+                    <span>d</span>
+                    <span>e</span>
+                    <span>f</span>
+                    <span>g</span>
+                    <span>h</span>
+                    <span>i</span>
+                    <span>j</span>
+                </div>
                 <div class="gameboard"
                     id="gameboard-left">
                 </div>
+                <div class="fleet-power plate">
+                    <div id="fp-left"
+                        style="width:0%">
+                    </div>
+                </div>
             </div>
-            <div>
+            <div class="panel">
                 <h2>player 2</h2>
+                <div class="numbers">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <div class="letters">
+                    <span>a</span>
+                    <span>b</span>
+                    <span>c</span>
+                    <span>d</span>
+                    <span>e</span>
+                    <span>f</span>
+                    <span>g</span>
+                    <span>h</span>
+                    <span>i</span>
+                    <span>j</span>
+                </div>
                 <div class="gameboard"
                     id="gameboard-right">
+                </div>
+                <div class="fleet-power plate">
+                    <div id="fp-right"
+                        style="width:0%">
+                    </div>
                 </div>
             </div>
         `
