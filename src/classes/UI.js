@@ -1,17 +1,31 @@
  class UI {
     constructor() {
         this.body = document.body;
-        this.gameboardLeft = undefined;
-        this.gameboardRight = undefined;
-        this.cellsLeft = undefined;
-        this.cellsRight = undefined;
-        this.sourceRight = undefined;
-        this.sourceLeft = undefined;
+
+        this.gameboard = {
+            left: undefined,
+            right: undefined
+        };
+
+        this.cells = {
+            left: undefined,
+            right: undefined
+        };
+
+        this.source = {
+            left:undefined,
+            right:undefined
+        };
+
+        this.fpMeter = {
+            left:undefined,
+            right: undefined
+        };
     }
 
     linkSources (left, right) {
-        this.sourceLeft = left;
-        this.sourceRight = right;
+        this.source.left = left;
+        this.source.right = right;
     }
 
     startScreen () {
@@ -116,8 +130,10 @@
         `
         this.body.appendChild(plate);
 
-        this.gameboardLeft = document.getElementById('gameboard-left');
-        this.gameboardRight = document.getElementById('gameboard-right');
+        this.gameboard.left = document.getElementById('gameboard-left');
+        this.gameboard.right = document.getElementById('gameboard-right');
+        this.fpMeter.left = document.getElementById('fp-left');
+        this.fpMeter.right = document.getElementById('fp-right');
 
         const fillGameboard = (gameboard) => {
             const createCell = () => {
@@ -148,23 +164,54 @@
             }
         }
 
-        fillGameboard(this.gameboardLeft);
-        fillGameboard(this.gameboardRight);
-        this.cellsLeft = this.gameboardLeft.querySelectorAll('.cell');
-        this.cellsRight = this.gameboardRight.querySelectorAll('.cell');
+        fillGameboard(this.gameboard.left);
+        fillGameboard(this.gameboard.right);
+        this.cells.left = this.gameboard.left.querySelectorAll('.cell');
+        this.cells.right = this.gameboard.right.querySelectorAll('.cell');
     }
 
-    
+    updatePowerMeter (meter, number) {
+        
+    }
+
+    async showMessage(string) {
+        return new Promise((resolve) => {
+          const background = this.body.firstElementChild;
+          background.style.pointerEvents = 'none';
+          const body = document.createElement('div');
+          body.classList.add('plate');
+          body.classList.add('message');
+          body.innerHTML = `
+            <h2>Attention!</h2>
+            <p>${string}</p>
+            <button>OK</button>
+          `;
+          this.body.appendChild(body);
+          body.style.animationName = 'appear';
+      
+          const removeMessage = () => {
+            body.style.animationName = 'disappear';
+            body.addEventListener('animationend', () => {
+              this.body.removeChild(body);
+              background.style.pointerEvents = 'all';
+              resolve(); // Resolve the promise when the "OK" button is clicked
+            });
+          };
+      
+          const button = body.querySelector('button');
+          button.addEventListener('click', removeMessage);
+        });
+    }
 
     searchCell (x, y) {
-        for (let i = 0; i < this.cellsLeft.length; i++) {
-            const cell = this.cellsLeft[i];
+        for (let i = 0; i < this.cells.left.length; i++) {
+            const cell = this.cells.left[i];
             if (cell.dataset.x === x && cell.dataset.y === y) return cell;
         }
     }
 
     refreshBoard () {
-        const source = this.sourceLeft;
+        const source = this.source.left;
         const shipQ = [];
         const docks = source.docks;
         const misses = source.misses;
@@ -262,7 +309,7 @@
             target.addEventListener('mouseleave', unHover);
         }
 
-        this.gameboardLeft.addEventListener('mouseover', shipFrame);
+        this.gameboard.left.addEventListener('mouseover', shipFrame);
         document.addEventListener('keydown', rotate)
     }
 }
