@@ -102,6 +102,69 @@ li > button:hover {
     grid-template-columns: repeat(2, 1fr);
 }
 
+.message {
+    position: absolute;
+    width: calc(var(--s-side) * 7);
+    height: fit-content;
+    animation: none 300ms ease-out 1;
+    animation-name: none;
+}
+
+@keyframes appear {
+    from {
+        transform: translateY(-200%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(200%);
+        opacity: 0;
+    }
+}
+
+
+.message > h2 {
+    text-align: left;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.message > p {
+    font-family: var(--f-monospace);
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    text-shadow: var(--c-black) 0 0 5px;
+    font-weight: 600;
+}
+
+.message > button {
+    margin-left: auto;
+    display: block;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    font-family: var(--f-display);
+    border: 1px solid var(--c-white);
+    box-shadow: var(--c-black) 0 0 5px;
+    outline: 0;
+    background-color: transparent;
+    color: var(--c-white);
+    text-shadow: var(--c-black) 0 0 5px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
 .panel {
     display: grid;
     grid-template-rows: auto var(--s-side) 1fr var(--s-side);
